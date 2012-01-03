@@ -1,2 +1,82 @@
-export PS1="\w$ "
-export EDITOR="mate_wait"
+# ------------- Prompt config
+parse_git_branch() { 
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/' 
+}
+parse_git_branch_name() { 
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/' 
+}
+PS1='\[\033[01;32m\]\u@\h:\[\033[01;34m\]\w\[\033[00m\]\[\033[01;32m\]$(parse_git_branch)\[\033[00m\]\$ '
+
+export LSCOLORS="Hxfxcxdxbxegedabagacad"
+export LC_CTYPE=en_US.UTF-8
+export CDPATH=.:$HOME/work/tsc_web:$HOME/work/tsc_web/branches
+export LESS="-R"
+export EDITOR=vim
+
+# from http://www.entropy.ch/git/dotconfig.git/blob_plain/HEAD:/.bashrc.essential
+# ------------- shell options
+# According to tips from http://www.ukuug.org/events/linux2003/papers/bash_tips/
+shopt -s cdspell    # Fix minor cd typos automatically
+
+# ------------- History tweaks
+# Append and don't overwrite the history when the shell exits
+shopt -s histappend 
+
+# Append history immediately after every command, don't wait until shell exits.
+# Other sessions see the new commands immediately.
+export PROMPT_COMMAND='history -a; printf "\x1b]0;$PWD\x07"'
+
+# Don't store identical lines in the history and
+# don't store lines beginning with a space (useful for password arguments etc.)
+export HISTCONTROL=erasedups:ignorespace
+export HISTSIZE=5000
+
+# arrow-up and down with a partially typed line searches history
+# http://blog.macromates.com/2008/working-with-history-in-bash/#comment-3287
+bind '"\e[A"':history-search-backward
+bind '"\e[B"':history-search-forward
+
+# ------------- readline tweaks
+bind 'set completion-query-items 2000' # don't ask, show them all
+bind 'set completion-ignore-case on'
+bind 'set match-hidden-files off'      # omit dotfiles from completion
+bind 'set show-all-if-ambiguous on'    # don't require two tabs
+bind 'set page-completions off'        # no pager for long completion lists, show them all at once
+bind 'set visible-stats on'            # append file type characters to completion items
+
+# enable 8 bit chars, as per http://www.unixguide.net/unix/bash/G1.shtml
+bind 'set convert-meta off'
+bind 'set output-meta on'
+bind 'set input-meta on'
+bind 'set meta-flag on'
+
+# Magic-space expands history immediately after typing a space
+# Tricks from http://www.ukuug.org/events/linux2003/papers/bash_tips/
+bind space:magic-space
+
+# arrow-up and down with a partially typed line searches history
+# http://blog.macromates.com/2008/working-with-history-in-bash/#comment-3287
+bind '"\e[A"':history-search-backward
+bind '"\e[B"':history-search-forward
+
+# Make forward delete work: http://desp.night.pl/terminal.html
+bind '"\e[3~"':delete-char
+
+# Move backward and forward a word on Ctrl-Arrow-Left/Right
+bind '"\e[5D"':backward-word
+bind '"\e[5C"':forward-word
+
+# ------------- Mac OS X specifics
+UNAME=$(uname)
+if [ $UNAME == Darwin ]; then
+	function mdlocate {
+		echo mdfind "kMDItemFSName == '$1'"	
+		mdfind "kMDItemFSName == '$1'"	
+	}
+
+	function spot { mdfind "kMDItemDisplayName == '$@'wc"; }
+fi
+
+# load RVM (see http://rvm.beginrescueend.com/rvm/install/)
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion

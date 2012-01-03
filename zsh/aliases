@@ -31,3 +31,6 @@ alias rst='touch tmp/restart.txt'
 
 # commands starting with % for pasting from web
 alias %=' '
+
+# misc
+alias rmds='find . -name .DS_Store -exec rm -f "{}" \;'
