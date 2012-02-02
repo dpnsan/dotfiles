@@ -9,7 +9,7 @@ PS1='\[\033[01;32m\]\u@\h:\[\033[01;34m\]\w\[\033[00m\]\[\033[01;32m\]$(parse_gi
 
 export LSCOLORS="Hxfxcxdxbxegedabagacad"
 export LC_CTYPE=en_US.UTF-8
-export CDPATH=.:$HOME/work/tsc_web:$HOME/work/tsc_web/branches
+export CDPATH=.:$HOME/work
 export LESS="-R"
 export EDITOR=vim
 
