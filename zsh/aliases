@@ -12,6 +12,7 @@ alias gl='git pull'
 alias ga='git add'
 alias gp='git push'
 alias gd='git diff'
+alias gdp='git diff -p'
 alias gc='git commit'
 alias gca='git commit -a'
 alias gco='git checkout'
@@ -22,6 +23,8 @@ alias changelog='git log `git log -1 --format=%H -- CHANGELOG*`..; cat CHANGELOG
 alias glg='git log --graph --pretty=oneline --abbrev-commit --decorate'
 alias gl1='git log --name-only -1'
 alias gcp='git cherry-pick'
+alias gss='git stash save'
+alias gsp='git stash pop'
 
 # rails
 alias sc='bundle exec script/console'
