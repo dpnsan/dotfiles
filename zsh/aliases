@@ -25,6 +25,7 @@ alias gl1='git log --name-only -1'
 alias gcp='git cherry-pick'
 alias gss='git stash save'
 alias gsp='git stash pop'
+alias gsl='git stash list'
 
 # rails
 alias sc='bundle exec script/console'
