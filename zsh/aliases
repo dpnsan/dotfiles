@@ -42,3 +42,5 @@ alias %=' '
 
 # misc
 alias rmds='find . -name .DS_Store -exec rm -f "{}" \;'
+
+alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
