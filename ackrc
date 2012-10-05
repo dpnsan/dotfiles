@@ -1,0 +1,16 @@
+--type-set=bin=.pdf
+--type-set=bin=.sj
+--type-set=bin=.cache
+--nobin
+--type-add=ruby=.haml
+--type-add=html=.haml
+--type-add=css=.sass,.scss
+--type-add=objc=.pch
+--type-set=xcode=.pbxproj,.pbxuser,.perspectivev3
+--type-set=ragel=.rl
+--type-set=nib=.xib
+--type-set=plist=.plist
+--type-set=tmstuff=.tmproj,.tm_build_errors
+--nonib
+--notmstuff
+--noxcode
