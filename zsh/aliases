@@ -9,6 +9,7 @@ alias la='ls -A'
 
 # git
 alias gl='git pull'
+alias glr='git pull --rebase'
 alias ga='git add'
 alias gp='git push'
 alias gd='git diff'
@@ -26,6 +27,15 @@ alias gcp='git cherry-pick'
 alias gss='git stash save'
 alias gsp='git stash pop'
 alias gsl='git stash list'
+
+# git flow
+alias gffs='git flow feature start'
+alias gfff='git flow feature finish'
+alias gfhs='git flow hotfix start'
+alias gfhf='git flow hotfix finish'
+alias gfrs='git flow release start'
+alias gfrf='git flow release finish'
+
 
 # rails
 alias sc='bundle exec script/console'
