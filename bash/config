@@ -24,7 +24,7 @@ shopt -s histappend
 
 # Append history immediately after every command, don't wait until shell exits.
 # Other sessions see the new commands immediately.
-export PROMPT_COMMAND='history -a; printf "\x1b]0;$PWD\x07"'
+export PROMPT_COMMAND='history -a; history -n; printf "\x1b]0;$PWD\x07"'
 
 # Don't store identical lines in the history and
 # don't store lines beginning with a space (useful for password arguments etc.)
