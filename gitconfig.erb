@@ -18,3 +18,18 @@
 [github]
 	user = <%= print("GitHub Username: "); STDOUT.flush; STDIN.gets.chomp %>
 	token = <%= print("GitHub API Token: "); STDOUT.flush; STDIN.gets.chomp %>
+[push]
+  default = upstream
+[alias]
+  st = status
+  ci = commit
+  co = checkout
+  br = branch
+  lg = log --graph --pretty=oneline --abbrev-commit --decorate
+  l1 = log --name-only -1
+  cp = cherry-pick
+	sh = show --name-only --decorate
+	purr = pull --rebase
+	ready = rebase -i @{u}
+	ours   = "!f() { git commit --ours $@ && git add $@; }; f"
+  theirs = "!f() { git commit --theirs $@ && git add $@; }; f"
