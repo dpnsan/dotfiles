@@ -1,25 +1,27 @@
 [user]
-	name = <%= print("Your Name: "); STDOUT.flush; STDIN.gets.chomp %>
-	email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
+  name = <%= print("Your Name: "); STDOUT.flush; STDIN.gets.chomp %>
+  email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
 [alias]
-	co = checkout
+  co = checkout
 [color]
-	diff = auto
-	status = auto
-	branch = auto
+  diff = auto
+  status = auto
+  branch = auto
 [core]
-	excludesfile = <%= ENV['HOME'] %>/.gitignore
-	editor = mate -w
-	autocrlf = input
+  excludesfile = <%= ENV['HOME'] %>/.gitignore
+  editor = mate -w
+  autocrlf = input
 [apply]
-	whitespace = nowarn
+  whitespace = nowarn
 [format]
-	pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
+  pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
 [github]
-	user = <%= print("GitHub Username: "); STDOUT.flush; STDIN.gets.chomp %>
-	token = <%= print("GitHub API Token: "); STDOUT.flush; STDIN.gets.chomp %>
+  user = <%= print("GitHub Username: "); STDOUT.flush; STDIN.gets.chomp %>
+  token = <%= print("GitHub API Token: "); STDOUT.flush; STDIN.gets.chomp %>
 [push]
   default = upstream
+[branch]
+  autosetuprebase = always
 [alias]
   st = status
   ci = commit
@@ -28,8 +30,9 @@
   lg = log --graph --pretty=oneline --abbrev-commit --decorate
   l1 = log --name-only -1
   cp = cherry-pick
-	sh = show --name-only --decorate
-	purr = pull --rebase
-	ready = rebase -i @{u}
-	ours   = "!f() { git commit --ours $@ && git add $@; }; f"
+  sh = show --name-only --decorate
+  purr = pull --rebase
+  ready = rebase -i @{u}
+  ours   = "!f() { git commit --ours $@ && git add $@; }; f"
   theirs = "!f() { git commit --theirs $@ && git add $@; }; f"
+  up = "!git remote update -p; git merge --ff-only @{u}"
