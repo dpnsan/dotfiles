@@ -30,7 +30,7 @@
   lg = log --graph --pretty=oneline --abbrev-commit --decorate
   l1 = log --name-only -1
   cp = cherry-pick
-  sh = show --name-only --decorate
+  sh = show --name-status --decorate
   purr = pull --rebase
   ready = rebase -i @{u}
   ours   = "!f() { git commit --ours $@ && git add $@; }; f"

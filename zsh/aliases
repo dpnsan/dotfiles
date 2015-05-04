@@ -22,7 +22,7 @@ alias gst='git status'
 alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
 alias changelog='git log `git log -1 --format=%H -- CHANGELOG*`..; cat CHANGELOG*'
 alias glg='git log --graph --pretty=oneline --abbrev-commit --decorate'
-alias gl1='git log --name-only -1'
+alias gl1='git log --name-only -1 --no-merges'
 alias gcp='git cherry-pick'
 alias gss='git stash save'
 alias gsp='git stash pop'
@@ -46,6 +46,7 @@ alias tlog='tail -f log/development.log'
 alias scaffold='script/generate nifty_scaffold'
 alias migrate='bundle exec rake db:migrate db:test:clone'
 alias rst='touch tmp/restart.txt'
+alias be='bundle exec'
 
 # commands starting with % for pasting from web
 alias %=' '
@@ -53,4 +54,6 @@ alias %=' '
 # misc
 alias rmds='find . -name .DS_Store -exec rm -f "{}" \;'
 
-alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+if [ -d /Applications/MacVim.app ]; then
+  alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+fi
